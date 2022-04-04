@@ -157,11 +157,11 @@ class _NeumorphicSliderState extends State<NeumorphicSlider> {
           ((widget.min + (widget.max - widget.min) * newPercent))
               .clamp(widget.min, widget.max);
 
-          if (widget.onChanged != null) {
-            widget.onChanged!(newValue);
-          }
           if (widget.onChangeStart != null) {
             widget.onChangeStart!(newValue);
+          }
+          if (widget.onChanged != null) {
+            widget.onChanged!(newValue);
           }
         },
         onPointerUp: (PointerUpEvent event) {
