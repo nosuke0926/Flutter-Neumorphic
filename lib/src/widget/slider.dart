@@ -143,16 +143,25 @@ class _NeumorphicSliderState extends State<NeumorphicSlider> {
           final tapPos = event.localPosition;
           final newPercent = tapPos.dx / constraints.maxWidth;
           final newValue =
-              ((widget.min + (widget.max - widget.min) * newPercent))
-                  .clamp(widget.min, widget.max);
+          ((widget.min + (widget.max - widget.min) * newPercent))
+              .clamp(widget.min, widget.max);
 
           if (widget.onChanged != null) {
             widget.onChanged!(newValue);
           }
         },
         onPointerDown: (PointerDownEvent event) {
+          final tapPos = event.localPosition;
+          final newPercent = tapPos.dx / constraints.maxWidth;
+          final newValue =
+          ((widget.min + (widget.max - widget.min) * newPercent))
+              .clamp(widget.min, widget.max);
+
+          if (widget.onChanged != null) {
+            widget.onChanged!(newValue);
+          }
           if (widget.onChangeStart != null) {
-            widget.onChangeStart!(widget.value);
+            widget.onChangeStart!(newValue);
           }
         },
         onPointerUp: (PointerUpEvent event) {
