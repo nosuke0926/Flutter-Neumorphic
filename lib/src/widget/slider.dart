@@ -14,6 +14,7 @@ typedef void NeumorphicSliderListener(double percent);
 ///
 /// you can define a custom [depth] for the roundrect
 ///
+/// [shadowLightColor] and [shadowDarkColor] defines the shadow's color of thumb widget
 @immutable
 class SliderStyle {
   final double depth;
@@ -25,6 +26,9 @@ class SliderStyle {
 
   final NeumorphicBorder border;
   final NeumorphicBorder thumbBorder;
+  
+  final Color? shadowLightColor;
+  final Color? shadowDarkColor;
 
   const SliderStyle({
     this.depth = 0,
@@ -35,6 +39,8 @@ class SliderStyle {
     this.variant,
     this.border = const NeumorphicBorder.none(),
     this.thumbBorder = const NeumorphicBorder.none(),
+    this.shadowLightColor,
+    this.shadowDarkColor,
   });
 
   @override
@@ -220,6 +226,8 @@ class _NeumorphicSliderState extends State<NeumorphicSlider> {
         border: widget.style.thumbBorder,
         lightSource: widget.style.lightSource ?? theme.lightSource,
         color: widget.style.accent ?? theme.accentColor,
+        shadowLightColor: widget.style.shadowLightColor,
+        shadowDarkColor: widget.style.shadowDarkColor,
         boxShape: NeumorphicBoxShape.circle(),
       ),
       child: SizedBox(
