@@ -1,10 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../flutter_neumorphic.dart';
-import 'inherited_neumorphic_theme.dart';
-import 'theme.dart';
-import 'theme_wrapper.dart';
 
 export 'inherited_neumorphic_theme.dart';
 export 'theme.dart';
@@ -97,16 +92,15 @@ class NeumorphicTheme extends StatefulWidget {
     return currentTheme(context).disabledColor;
   }
 
-  static double? intensity(BuildContext context) {
+  static double intensity(BuildContext context) {
     return currentTheme(context).intensity;
   }
 
-  static double? depth(BuildContext context) {
+  static double depth(BuildContext context) {
     return currentTheme(context).depth;
   }
 
   static double? embossDepth(BuildContext context) {
-    if (currentTheme(context).depth == null) return null;
     return -currentTheme(context).depth.abs();
   }
 

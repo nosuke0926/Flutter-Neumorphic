@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class CreditCardSample extends StatefulWidget {
@@ -235,7 +233,7 @@ class __PageContentState extends State<_PageContent> {
                 setState(() {
                   _useDark = !_useDark;
 
-                  NeumorphicTheme.of(context).themeMode =
+                  NeumorphicTheme.of(context)!.themeMode =
                       _useDark ? ThemeMode.dark : ThemeMode.light;
                 });
               },
@@ -327,6 +325,9 @@ class __PageContentState extends State<_PageContent> {
             groupValue: _dotIndex,
             value: 0,
             onChanged: (value) {
+              if (value == null) {
+                return;
+              }
               setState(() {
                 _dotIndex = value;
               });
@@ -347,6 +348,9 @@ class __PageContentState extends State<_PageContent> {
             groupValue: _dotIndex,
             value: 1,
             onChanged: (value) {
+              if (value == null) {
+                return;
+              }
               setState(() {
                 _dotIndex = value;
               });
@@ -367,6 +371,9 @@ class __PageContentState extends State<_PageContent> {
             groupValue: _dotIndex,
             value: 2,
             onChanged: (value) {
+              if (value == null) {
+                return;
+              }
               setState(() {
                 _dotIndex = value;
               });

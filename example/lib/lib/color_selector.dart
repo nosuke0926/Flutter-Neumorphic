@@ -1,18 +1,21 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 @immutable
 class ColorSelector extends StatelessWidget {
-  final Color color;
-  final ValueChanged<Color> onColorChanged;
+  final Color? color;
+  final ValueChanged<Color>? onColorChanged;
   final double height;
   final double width;
 
-  const ColorSelector(
-      {this.height = 40, this.width = 40, this.color, this.onColorChanged});
+  const ColorSelector({
+    this.height = 40,
+    this.width = 40,
+    required this.color,
+    required this.onColorChanged,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +24,11 @@ class ColorSelector extends StatelessWidget {
         _changeColor(context);
       },
       child: Container(
-        height: this.height,
-        width: this.width,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: this.color,
+            color: color,
             border: Border.all(
               color: Colors.grey,
               width: 1,
@@ -42,14 +45,14 @@ class ColorSelector extends StatelessWidget {
             title: const Text('Pick a color!'),
             content: SingleChildScrollView(
               child: ColorPicker(
-                pickerColor: color,
-                onColorChanged: this.onColorChanged,
+                pickerColor: color ?? Colors.white, // Default color if null
+                onColorChanged: onColorChanged ?? (color) {},
                 showLabel: true,
                 pickerAreaHeightPercent: 0.8,
               ),
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: const Text('Close'),
                 onPressed: () {
                   Navigator.of(context).pop();

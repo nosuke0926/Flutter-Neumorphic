@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Code extends StatelessWidget {
   final String text;
 
-  Code(this.text);
+  Code(this.text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class Code extends StatelessWidget {
 class MyIntWidget extends StatefulWidget {
   final int value;
 
-  MyIntWidget({this.value});
+  MyIntWidget({Key? key, required this.value}) : super(key: key);
 
   @override
   _MyIntWidgetState createState() => _MyIntWidgetState();
@@ -30,30 +29,32 @@ class MyIntWidget extends StatefulWidget {
 
 class _MyIntWidgetState extends State<MyIntWidget>
     with TickerProviderStateMixin {
-  int _value;
-  AnimationController _controller;
-  Animation<int> _valueAnimation;
+  int? _value;
+  late AnimationController _controller;
+  Animation<int>? _valueAnimation;
 
   @override
   void initState() {
-    this._value = widget.value;
+    super.initState();
+    _value = widget.value;
     _controller =
         AnimationController(duration: Duration(milliseconds: 300), vsync: this);
-    super.initState();
   }
 
   @override
   void didUpdateWidget(MyIntWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
       _controller.reset();
       _valueAnimation =
-          Tween(begin: _value, end: widget.value).animate(_controller)
+          Tween<int>(begin: _value, end: widget.value).animate(_controller)
             ..addListener(() {
-              _value = _valueAnimation.value;
+              setState(() {
+                _value = _valueAnimation?.value;
+              });
             });
       _controller.forward();
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override

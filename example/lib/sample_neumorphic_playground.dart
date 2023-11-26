@@ -256,17 +256,20 @@ class __PageState extends State<_Page> {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: shape == NeumorphicShape.concave
+                    ? buttonActiveColor
+                    : buttonInnactiveColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                padding: EdgeInsets.all(16), // パディングの追加
+              ),
               onPressed: () {
                 setState(() {
                   shape = NeumorphicShape.concave;
                 });
               },
-              color: shape == NeumorphicShape.concave
-                  ? buttonActiveColor
-                  : buttonInnactiveColor,
               child: Image.asset("assets/images/concave.png",
                   color: shape == NeumorphicShape.concave
                       ? iconActiveColor
@@ -276,45 +279,49 @@ class __PageState extends State<_Page> {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
-              onPressed: () {
-                setState(() {
-                  shape = NeumorphicShape.convex;
-                });
-              },
-              color: shape == NeumorphicShape.convex
-                  ? buttonActiveColor
-                  : buttonInnactiveColor,
-              child: Image.asset("assets/images/convex.png",
-                  color: shape == NeumorphicShape.convex
-                      ? iconActiveColor
-                      : iconInactiveColor),
-            ),
-          ),
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: shape == NeumorphicShape.convex
+                      ? buttonActiveColor
+                      : buttonInnactiveColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  padding: EdgeInsets.all(16), // パディングの追加
+                ),
+                onPressed: () {
+                  setState(() {
+                    shape = NeumorphicShape.convex;
+                  });
+                },
+                child: Image.asset("assets/images/convex.png",
+                    color: shape == NeumorphicShape.convex
+                        ? iconActiveColor
+                        : iconInactiveColor),
+              )),
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
-              onPressed: () {
-                setState(() {
-                  shape = NeumorphicShape.flat;
-                });
-              },
-              color: shape == NeumorphicShape.flat
-                  ? buttonActiveColor
-                  : buttonInnactiveColor,
-              child: Image.asset("assets/images/flat.png",
-                  color: shape == NeumorphicShape.flat
-                      ? iconActiveColor
-                      : iconInactiveColor),
-            ),
-          ),
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: shape == NeumorphicShape.flat
+                      ? buttonActiveColor
+                      : buttonInnactiveColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  padding: EdgeInsets.all(16), // パディングの追加
+                ),
+                onPressed: () {
+                  setState(() {
+                    shape = NeumorphicShape.flat;
+                  });
+                },
+                child: Image.asset("assets/images/flat.png",
+                    color: shape == NeumorphicShape.flat
+                        ? iconActiveColor
+                        : iconInactiveColor),
+              )),
         ),
       ],
     );
